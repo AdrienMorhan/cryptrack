@@ -4,16 +4,21 @@ import { Link } from "react-router";
 function CoinCard(props) {
 
     let backgroundColor;
+    let borderColor;
     let textColor = "white";
 
     if (props.change < -3) {
-        backgroundColor = "rgb(219, 0, 22)";
+        backgroundColor = "rgba(219, 0, 22, 0.6)";
+        borderColor = "rgb(219, 0, 22)";
     } else if (props.change < 0) {
-        backgroundColor = "rgb(255, 159, 167)";
+        backgroundColor = "rgba(255, 159, 167, 0.6)";
+        borderColor = "rgb(255, 159, 167)";
     } else if (props.change <= 3) {
-        backgroundColor = "rgb(160, 255, 179)";
+        backgroundColor = "rgba(160, 255, 179, 0.6)";
+        borderColor = "rgb(160, 255, 179)";
     } else {
-        backgroundColor = "rgb(0, 201, 67)";
+        backgroundColor = "rgba(0, 201, 67, 0.6)";
+        borderColor = "rgb(0, 201, 67)";
     }
 
     return (
