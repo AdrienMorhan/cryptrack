@@ -5,3 +5,8 @@
 .coin-card:hover {
     transform: scale(1.05);
 }
+
+.coin-card,
+.coin-card:hover {
+  text-decoration: none;
+}

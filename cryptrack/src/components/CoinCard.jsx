@@ -1,24 +1,23 @@
 import { Card } from "react-bootstrap";
+import { Link } from "react-router";
 
 function CoinCard(props) {
 
     let backgroundColor;
-    let textColor = "black";
+    let textColor = "white";
 
     if (props.change < -3) {
         backgroundColor = "rgb(219, 0, 22)";
-        textColor = "black";
     } else if (props.change < 0) {
         backgroundColor = "rgb(255, 159, 167)";
     } else if (props.change <= 3) {
         backgroundColor = "rgb(160, 255, 179)";
     } else {
         backgroundColor = "rgb(0, 201, 67)";
-        textColor = "black";
     }
 
     return (
-        <Card className="text-center h-100 coin-card" style={{ backgroundColor: backgroundColor, color: textColor }}>
+        <Card as = {Link} to = {`/coin/${props.id}`} className="text-center h-100 coin-card" style={{ backgroundColor: backgroundColor, color: textColor }}>
         <Card.Body>
             <img src={props.image} alt={props.name} width="48" height="48" />
             <Card.Title>{props.rank} - {props.name}</Card.Title>
