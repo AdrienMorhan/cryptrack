@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import CoinList from "../components/CoinList";
 
 function Market() {
   const [coins, setCoins] = useState([]);
@@ -30,11 +31,12 @@ function Market() {
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
-  return coins.map((coin) => (
-    <p key={coin.id}>
-      {coin.name} : {coin.current_price}
-    </p>
-  ));
+  return (
+    <div>
+      <h2>Market</h2>
+      <CoinList coins={coins} />
+    </div>
+  );
 }
 
 export default Market;
