@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router";
 import { Row, Col, Button, ButtonGroup, Card } from "react-bootstrap";
 import PriceChart from "../components/PriceChart";
+import FavoriteButton from "../components/FavoriteButton";
 
-function CoinDetail() {
+function CoinDetail(props) {
     const { id } = useParams();
     const [coin, setCoin] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -94,6 +95,10 @@ function CoinDetail() {
                     Market cap: {coin.market_data.market_cap.usd.toLocaleString()} $
                 </Card.Body>
             </Card>
+            <FavoriteButton
+            isFavorite={props.favorites.includes(id)}
+            onToggle={() => props.onToggleFavorite(id)}
+            />
             </Col>
             <Col md={8}>
                 <Card>
