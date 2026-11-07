@@ -1,29 +1,28 @@
 .coin-card {
-  border-radius: 25px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 25px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .coin-card:hover {
-  transform: translateY(-4px) scale(1.03);
-box-shadow: 0 10px 24px rgba(255, 255, 255, 0.25);
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 10px 24px rgba(255, 255, 255, 0.25);
 }
 
-.coin-card,
-.coin-card:hover {
-  text-decoration: none;
+.coin-card, .coin-card:hover {
+    text-decoration: none;
 }
 
 body {
-  background-color: #121212;
-  color: #ffffff;
+    background-color: #121212;
+    color: #ffffff;
 }
 
 .card {
-  background-color: transparent;
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 a {
-  color: #6ea8fe;
+    color: #6ea8fe;
 }

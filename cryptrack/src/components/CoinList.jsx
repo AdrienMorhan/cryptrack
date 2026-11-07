@@ -3,7 +3,7 @@ import CoinCard from "./CoinCard";
 
 function CoinList(props) {
     return (
-        <Row xs = {1} md = {2} lg = {4} className="g-3">
+        <Row xs={1} md={2} lg={4} xl={props.perRow || 4} xxl={props.perRow || 4} className="g-2">
         {props.coins.map((coin) => (
             <Col key = {coin.id}>
             <CoinCard
