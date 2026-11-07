@@ -2,21 +2,22 @@ import { Row, Col } from "react-bootstrap";
 import CoinCard from "./CoinCard";
 
 function CoinList(props) {
+    const perRow = props.perRow || 4;
     return (
-        <Row xs={1} md={2} lg={4} xl={props.perRow || 4} xxl={props.perRow || 4} className="g-2">
+        <div style={{ display: "flex", flexWrap: "wrap" }}>
         {props.coins.map((coin) => (
-            <Col key = {coin.id}>
-            <CoinCard
-                id = {coin.id}
-                rank = {coin.market_cap_rank}
-                name = {coin.name}
-                image = {coin.image}
-                price = {coin.current_price}
-                change = {coin.price_change_percentage_24h}
-            />
-            </Col>
+            <div key={coin.id} style={{ width: `${100 / perRow}%` }}>
+                <CoinCard
+                    id = {coin.id}
+                    rank = {coin.market_cap_rank}
+                    name = {coin.name}
+                    image = {coin.image}
+                    price = {coin.current_price}
+                    change = {coin.price_change_percentage_24h}
+                />
+            </div>
         ))}
-        </Row>
+        </div>
     );
 }
 

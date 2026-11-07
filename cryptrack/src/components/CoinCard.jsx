@@ -4,31 +4,26 @@ import { Link } from "react-router";
 function CoinCard(props) {
 
     let backgroundColor;
-    let borderColor;
     let textColor = "white";
 
     if (props.change < -3) {
-        backgroundColor = "rgba(219, 0, 22, 0.6)";
-        borderColor = "rgb(219, 0, 22)";
+        backgroundColor = "rgb(103, 0, 10)";
     } else if (props.change < 0) {
-        backgroundColor = "rgba(255, 159, 167, 0.6)";
-        borderColor = "rgb(255, 159, 167)";
+        backgroundColor = "rgb(197, 21, 30)";
     } else if (props.change <= 3) {
-        backgroundColor = "rgba(160, 255, 179, 0.6)";
-        borderColor = "rgb(160, 255, 179)";
+        backgroundColor = "rgb(33, 194, 27)";
     } else {
-        backgroundColor = "rgba(0, 201, 67, 0.6)";
-        borderColor = "rgb(0, 201, 67)";
+        backgroundColor = "rgb(11, 109, 0)";
     }
 
     return (
-        <Card as = {Link} to = {`/coin/${props.id}`} className="text-center h-100 coin-card" style={{ backgroundColor: backgroundColor, color: textColor }}>
+        <Card as = {Link} to = {`/coin/${props.id}`} className="text-center coin-card" style={{ backgroundColor: backgroundColor, color: textColor }}>
         <Card.Body>
-            <img src={props.image} alt={props.name} width="48" height="48" />
-            <Card.Title>{props.rank} - {props.name}</Card.Title>
+            <img src={props.image} alt={props.name} width="36" height="36" />
+            <Card.Title style={{ fontSize: "0.8rem" }}>{props.rank} - {props.name}</Card.Title>
             <Card.Text>
             {props.price} ${" "}
-            <span style={{ color: "white", fontWeight: "bold" }}>
+            <span style={{ color: "white"}}>
                 ({props.change?.toFixed(2)} %)
             </span>
             </Card.Text>

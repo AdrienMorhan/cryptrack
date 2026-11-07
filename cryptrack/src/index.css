@@ -1,9 +1,21 @@
 .coin-card {
-    border-radius: 25px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    aspect-ratio: 1 / 1;
+    border-radius: 0;
+    z-index: 0;
+    position: relative;
+}
+
+.coin-card .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
 }
 
 .coin-card:hover {
+  z-index: 10;
     transform: translateY(-4px) scale(1.03);
     box-shadow: 0 10px 24px rgba(255, 255, 255, 0.25);
 }
@@ -26,3 +38,4 @@ body {
 a {
     color: #6ea8fe;
 }
+
