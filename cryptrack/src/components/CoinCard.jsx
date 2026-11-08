@@ -17,7 +17,7 @@ function CoinCard(props) {
     }
 
     return (
-        <Card as = {Link} to = {`/coin/${props.id}`} className="text-center coin-card" style={{ backgroundColor: backgroundColor, color: textColor }}>
+        <Card as = {Link} to = {`/coin/${props.id}`} className="text-center coin-card" style={{ backgroundColor: backgroundColor, color: textColor, fontSize: "0.65rem"}}>
         <Card.Body>
             <img src={props.image} alt={props.name} width="36" height="36" />
             <Card.Title style={{ fontSize: "0.8rem" }}>{props.rank} - {props.name}</Card.Title>
