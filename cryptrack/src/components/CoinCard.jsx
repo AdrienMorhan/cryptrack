@@ -17,10 +17,10 @@ function CoinCard(props) {
     }
 
     return (
-        <Card as = {Link} to = {`/coin/${props.id}`} className="text-center coin-card" style={{ backgroundColor: backgroundColor, color: textColor, fontSize: "0.65rem"}}>
+        <Card as = {Link} to = {`/coin/${props.id}`} className="text-center coin-card" style={{ backgroundColor: backgroundColor, color: textColor, fontSize: "0.65rem", textShadow: "1px 1px 3px rgba(0, 0, 0, 0.8)"}}>
         <Card.Body>
-            <img src={props.image} alt={props.name} width="36" height="36" />
-            <Card.Title style={{ fontSize: "0.8rem" }}>{props.rank} - {props.name}</Card.Title>
+            <img src={props.image} alt={props.name} width="36" height="36" style={{ filter: "drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.5))" }}/>
+            <Card.Title style={{ fontSize: "0.8rem" }}>{props.name}</Card.Title>
             <Card.Text>
             {props.price} ${" "}
             <span style={{ color: "white"}}>

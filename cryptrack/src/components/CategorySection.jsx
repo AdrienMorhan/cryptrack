@@ -15,7 +15,7 @@ function CategorySection(props) {
         </Button>
       </div>
       <CoinList
-        coins={props.isExpanded ? props.coins : props.coins.slice(0, 10)}
+        coins={props.isExpanded ? props.coins : props.coins.slice(0, 24)}
         perRow={10}
       />
     </div>

@@ -9,32 +9,34 @@ function Market() {
     const [expanded, setExpanded] = useState(null);
 
     useEffect(() => {
-      const getData = async () => {
-        try {
-          const res = await fetch(
-            "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1"
-          );
-          if (!res.ok) {
-            throw new Error(`HTTP error: ${res.status}`);
-          }
-          const data = await res.json();
-          setCoins(data);
+        const getData = async () => {
+          try {
+            const res = await fetch(
+                "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1",
+                { headers: { "x-cg-demo-api-key": import.meta.env.VITE_API_KEY } }
+            );
+            if (!res.ok) {
+                throw new Error(`Error: ${res.status}`);
+            }
+            const data = await res.json();
+            setCoins(data);
 
-          const stableRes = await fetch(
-            "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&category=stablecoins&per_page=100&page=1"
-          );
-          if (!stableRes.ok) {
-            throw new Error(`HTTP error: ${stableRes.status}`);
-          }
-          const stableData = await stableRes.json();
-          setStableIds(stableData.map((coin) => coin.id));
-        } catch (err) {
-          setError(err.message);
-        } finally {
-          setIsLoading(false);
-        }
-      };
-      getData();
+            const stableRes = await fetch(
+                "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&category=stablecoins&per_page=100&page=1",
+                { headers: { "x-cg-demo-api-key": import.meta.env.VITE_API_KEY } }
+            );
+            if (!stableRes.ok) {
+                throw new Error(`Error: ${stableRes.status}`);
+            }
+            const stableData = await stableRes.json();
+            setStableIds(stableData.map((coin) => coin.id));
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+        getData();
     }, []);
 
     if (isLoading) return <p>Loading...</p>;

@@ -105,7 +105,8 @@ function CoinDetail(props) {
                     <Card.Body>
                         {chartLoading && <p>Loading chart...</p>}
                         {chartError && <p>Error: {chartError}</p>}
-                        {!chartLoading && !chartError && <PriceChart prices={prices} days={days} />}
+                        {!chartLoading && !chartError && prices.length === 0 && (<p>No chart data available for this crypto.</p>)}
+                        {!chartLoading && !chartError && prices.length > 0 && (<PriceChart prices={prices} days={days} />)}
                     </Card.Body>
                 </Card>
             </Col>

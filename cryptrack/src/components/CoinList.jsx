@@ -3,11 +3,11 @@ import CoinCard from "./CoinCard";
 
 function CoinList(props) {
     
-    const [perRow, setPerRow] = useState(Math.floor(window.innerWidth / 110));
+    const [perRow, setPerRow] = useState(Math.floor(window.innerWidth / 125));
 
     useEffect(() => {
         const handleWindowSize = () => {
-            setPerRow(Math.floor(window.innerWidth / 110));
+            setPerRow(Math.floor(window.innerWidth / 125));
         };
         window.addEventListener("resize", handleWindowSize);
         return () => window.removeEventListener("resize", handleWindowSize);

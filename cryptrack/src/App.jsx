@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Routes, Route } from "react-router";
 import { Container } from "react-bootstrap";
 import NavBar from "./components/Navbar";
