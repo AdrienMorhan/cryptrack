@@ -64,7 +64,6 @@ function Market() {
 
     return (
       <div>
-        <h1 className="fw-bold mb-4">Crypto Market</h1>
         <CategorySection
           title="Top market cap"
           coins={topCoins}

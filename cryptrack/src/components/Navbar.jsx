@@ -12,10 +12,11 @@ function NavBar() {
         const getData = async () => {
             try {
             const res = await fetch(
-                `https://api.coingecko.com/api/v3/search?query=${query}`
+            `https://api.coingecko.com/api/v3/search?query=${query}`,
+            { headers: { "x-cg-demo-api-key": import.meta.env.VITE_API_KEY } }
             );
             if (!res.ok) {
-                throw new Error(`HTTP error: ${res.status}`);
+                throw new Error(`Error: ${res.status}`);
             }
             const data = await res.json();
             setSuggestions(
@@ -46,32 +47,34 @@ function NavBar() {
     };
 
     return (
-        <div style={{ display: "flex", justifyContent: "space-between", padding: 10 }}>
-        <Nav.Link as={Link} to="/">Cryptrack</Nav.Link>
-        <div style={{ display: "flex" }}>
-            <Nav>
-            <Nav.Link as={Link} to="/">Market</Nav.Link>
-            <Nav.Link as={Link} to="/favorites">Favorites</Nav.Link>
-            </Nav>
-            <div style={{ position: "relative" }}>
-            <form onSubmit={handleSubmit}>
-                <input
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                />
-                <button type="submit">Search</button>
-            </form>
-            {suggestions.length > 0 ? (
-                <div style={{position: "absolute", top: "100%", left: 0, right: 0, backgroundColor: "#000000", zIndex: 20}}>
-                {suggestions.map((coin) => (
-                    <Nav.Link as={Link} key={coin.id} to={`/coin/${coin.id}`} onClick={() => setQuery("")}>
-                    {coin.name} ({coin.symbol})
-                    </Nav.Link>
-                ))}
+        <div className="navbar">
+            <h1 className="title">CrypTrack</h1>
+            <div style={{ display: "flex", alignItems: "center"}}>
+                <Nav>
+                <Nav.Link className="link" as={Link} to="/" >Market</Nav.Link>
+                <Nav.Link className="link" as={Link} to="/favorites">Favorites</Nav.Link>
+                </Nav>
+                <div style={{ position: "relative" }}>
+                <form onSubmit={handleSubmit}>
+                    <input
+                    className="search-input"
+                    placeholder="Search a crypto"
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                    />
+                    <button type="submit" className="search-button">Search</button>
+                </form>
+                {suggestions.length > 0 ? (
+                    <div className="suggest">
+                    {suggestions.map((coin) => (
+                        <Nav.Link as={Link} key={coin.id} to={`/coin/${coin.id}`} onClick={() => setQuery("")}>
+                        {coin.name} ({coin.symbol})
+                        </Nav.Link>
+                    ))}
+                    </div>
+                ) : null}
                 </div>
-            ) : null}
             </div>
-        </div>
         </div>
     );
 }
