@@ -16,8 +16,8 @@ function PriceChart(props) {
   return (
     <ResponsiveContainer width="100%" height={400}>
       <LineChart data={data}>
-        <XAxis dataKey="time" minTickGap={40} />
-        <YAxis orientation="right" domain={["auto", "auto"]} />
+        <XAxis dataKey="time" minTickGap={40} tickLine={false} tick={{ fontSize: 10 }}/>
+        <YAxis orientation="right" domain={["auto", "auto"]} tickLine={false} tick={{ fontSize: 10 }}/>
         <Tooltip />
         <Line type="monotone" dataKey="price" dot={false} stroke="#0d6efd" />
       </LineChart>

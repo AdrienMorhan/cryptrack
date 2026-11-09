@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router";
-import { Row, Col, Button, ButtonGroup, Card } from "react-bootstrap";
+import { useParams } from "react-router";
+import { Button, ButtonGroup, Card } from "react-bootstrap";
 import PriceChart from "../components/PriceChart";
 import FavoriteButton from "../components/FavoriteButton";
 
@@ -19,10 +19,11 @@ function CoinDetail(props) {
         const getData = async () => {
         try {
             const res = await fetch(
-            `https://api.coingecko.com/api/v3/coins/${id}`
+            `https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false`,
+            { headers: { "x-cg-demo-api-key": import.meta.env.VITE_API_KEY } }
             );
             if (!res.ok) {
-            throw new Error(`HTTP error: ${res.status}`);
+            throw new Error(`Error: ${res.status}`);
             }
             const data = await res.json();
             setCoin(data);
@@ -41,10 +42,11 @@ function CoinDetail(props) {
         setChartError(null);
         try {
             const res = await fetch(
-            `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=${days}`
+            `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=${days}`,
+            { headers: { "x-cg-demo-api-key": import.meta.env.VITE_API_KEY } }
             );
             if (!res.ok) {
-            throw new Error(`HTTP error: ${res.status}`);
+            throw new Error(`Error: ${res.status}`);
             }
             const data = await res.json();
             setPrices(data.prices);
@@ -68,51 +70,51 @@ function CoinDetail(props) {
     ];
 
     return (
-        <div>
-        <Link to="/">Back to market</Link>
-        <Row className="mt-3">
-            <Col md={4}>
-            <div className="d-flex align-items-center mb-3">
-                <img src={coin.image.small} alt={coin.name} width="48" height="48" />
-                <h2 className="ms-3 mb-0">{coin.name}</h2>
-            </div>
-            <ButtonGroup className="mb-3">
-                {periods.map((p) => (
-                <Button
-                    key={p.value}
-                    variant={days === p.value ? "primary" : "outline-primary"}
-                    onClick={() => setDays(p.value)}
-                >
+        <div style={{maxWidth: 900, margin: "0 auto"}}>
+            <div style={{display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16}}>
+                <div style={{ display: "flex", alignItems: "center" }}>
+                    <img src={coin.image?.small} alt={coin.name} width="48" height="48" />
+                    <h2 className="ms-3 mb-0">{coin.name}</h2>
+                </div>
+                <ButtonGroup>
+                    {periods.map((p) => (<Button key={p.value} variant={days === p.value ? "primary" : "outline-primary"} onClick={() => setDays(p.value)}>
                     {p.label}
-                </Button>
+                    </Button>
                 ))}
-            </ButtonGroup>
-            <Card className="mb-2">
-                <Card.Body>Rank: {coin.market_cap_rank}</Card.Body>
-            </Card>
-            <Card>
-                <Card.Body>
-                    Market cap: {coin.market_data.market_cap.usd.toLocaleString()} $
-                </Card.Body>
-            </Card>
+                </ButtonGroup>
+            </div>
+            <div style={{ marginBottom: 16, textAlign: "center"}}>
             <FavoriteButton
             isFavorite={props.favorites.includes(id)}
             onToggle={() => props.onToggleFavorite(id)}
+            style={{ width: 200,  }}
             />
-            </Col>
-            <Col md={8}>
-                <Card>
-                    <Card.Body>
-                        {chartLoading && <p>Loading chart...</p>}
-                        {chartError && <p>Error: {chartError}</p>}
-                        {!chartLoading && !chartError && prices.length === 0 && (<p>No chart data available for this crypto.</p>)}
-                        {!chartLoading && !chartError && prices.length > 0 && (<PriceChart prices={prices} days={days} />)}
-                    </Card.Body>
-                </Card>
-            </Col>
-        </Row>
+            </div>
+
+            <Card className="mb-3">
+                <Card.Body className="p-1">
+                {chartLoading && <p>Loading chart...</p>}
+                {chartError && <p>Error: {chartError}</p>}
+                {!chartLoading && !chartError && prices.length === 0 && (
+                    <p>No chart data available for this crypto.</p>
+                )}
+                {!chartLoading && !chartError && prices.length > 0 && (
+                    <PriceChart prices={prices} days={days} />
+                )}
+                </Card.Body>
+            </Card>
+
+            <Card>
+                <Card.Body>
+                <Card.Title>About {coin.name}</Card.Title>
+                <p>
+                    Market cap: {coin.market_data?.market_cap?.usd?.toLocaleString()} $
+                </p>
+                </Card.Body>
+            </Card>
         </div>
     );
 }
+
 
 export default CoinDetail;
