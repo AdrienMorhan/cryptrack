@@ -155,6 +155,45 @@ a {
 }
 
 .link-no-favorite:hover {
-  color: #a0a0a0;
-  text-decoration: none;
+    color: #a0a0a0;
+    text-decoration: none;
+}
+
+/*Details' page*/
+.detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px
+}
+
+.detail-title {
+    display: flex;
+    align-items: center
+}
+
+.detail-logo {
+    width: 48px;
+    height: 48px;
+    filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.5));
+}
+
+.detail-name {
+    filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.5));
+}
+
+.detail-periods {
+
+}
+
+.detail-favorite {
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.detail-chart {
+    border: 1px solid black;
+    border-radius: 24px;
+    filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.5));
+    margin-bottom: 10px;
 }

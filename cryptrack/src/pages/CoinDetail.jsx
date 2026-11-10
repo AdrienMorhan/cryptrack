@@ -70,11 +70,11 @@ function CoinDetail(props) {
     ];
 
     return (
-        <div style={{maxWidth: 900, margin: "0 auto"}}>
-            <div style={{display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16}}>
-                <div style={{ display: "flex", alignItems: "center" }}>
-                    <img src={coin.image?.small} alt={coin.name} width="48" height="48" />
-                    <h2 className="ms-3 mb-0">{coin.name}</h2>
+        <div>
+            <div className="detail-header">
+                <div className="detail-title">
+                    <img className="detail-logo" src={coin.image?.small} alt={coin.name}/>
+                    <h2 className="detail-name">{coin.name}</h2>
                 </div>
                 <ButtonGroup>
                     {periods.map((p) => (<Button key={p.value} variant={days === p.value ? "primary" : "outline-primary"} onClick={() => setDays(p.value)}>
@@ -83,15 +83,15 @@ function CoinDetail(props) {
                 ))}
                 </ButtonGroup>
             </div>
-            <div style={{ marginBottom: 16, textAlign: "center"}}>
-            <FavoriteButton
-            isFavorite={props.favorites.includes(id)}
-            onToggle={() => props.onToggleFavorite(id)}
-            style={{ width: 200,  }}
-            />
+            <div className="detail-favorite">
+                <FavoriteButton 
+                isFavorite={props.favorites.includes(id)}
+                onToggle={() => props.onToggleFavorite(id)}
+                style={{ width: 200,  }}
+                />
             </div>
 
-            <Card className="mb-3">
+            <Card className="detail-chart">
                 <Card.Body className="p-1">
                 {chartLoading && <p>Loading chart...</p>}
                 {chartError && <p>Error: {chartError}</p>}
