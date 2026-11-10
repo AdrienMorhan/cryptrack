@@ -16,7 +16,7 @@ function CoinList(props) {
     return (
         <div style={{ display: "flex", flexWrap: "wrap" }}>
         {props.coins.map((coin) => (
-            <div key={coin.id} style={{ width: `${100 / perRow}%` }}>
+            <div key={coin.id} className="coin" style={{ width: `${100 / perRow}%` }}>
                 <CoinCard
                     id = {coin.id}
                     name = {coin.name}

@@ -107,11 +107,11 @@ a {
 }
 
 .category-block {
-    background-color: #ffffff;
+    background-color: #fff9f9;
     border-radius: 24px;
-    border-color: #0d6efd;
-    border: 2px solid blue;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    border-color: #000000;
+    border: 1px solid rgb(0, 0, 0);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
     padding: 24px;
 }
 
@@ -122,6 +122,8 @@ a {
     min-width: 0;
     overflow: hidden;
     border-radius: 24px;
+    backdrop-filter: blur(10px);
+    text-decoration: none;
     position: relative;
     z-index: 0;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -139,4 +141,20 @@ a {
     align-items: center;
     justify-content: center;
     padding: 0.25rem;
+}
+
+.coin {
+    padding: 4px;
+}
+
+.link-no-favorite {
+    font-size: 1.75rem;
+    color: black;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.link-no-favorite:hover {
+  color: #a0a0a0;
+  text-decoration: none;
 }

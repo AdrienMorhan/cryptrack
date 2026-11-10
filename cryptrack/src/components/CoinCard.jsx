@@ -4,20 +4,24 @@ import { Link } from "react-router";
 function CoinCard(props) {
 
     let backgroundColor;
-    let textColor = "white";
+    let glow;
 
     if (props.change < -3) {
-        backgroundColor = "rgb(103, 0, 10)";
+        backgroundColor = "rgba(197, 21, 30, 0.40)";
+        glow = "rgb(201, 2, 12)";
     } else if (props.change < 0) {
-        backgroundColor = "rgb(197, 21, 30)";
+        backgroundColor = "rgba(220, 90, 100, 0.22)";
+        glow = "rgba(251, 111, 123, 0.85)";
     } else if (props.change <= 3) {
-        backgroundColor = "rgb(33, 194, 27)";
+        backgroundColor = "rgba(46, 204, 113, 0.22)";
+        glow = "rgba(60, 250, 142, 0.85)";
     } else {
-        backgroundColor = "rgb(11, 109, 0)";
+        backgroundColor = "rgba(22, 200, 90, 0.40)";
+        glow = "rgb(1, 115, 43)";
     }
 
     return (
-        <Card as = {Link} to = {`/coin/${props.id}`} className="text-center coin-card" style={{ backgroundColor: backgroundColor, color: textColor, fontSize: "0.65rem", textShadow: "1px 1px 3px rgba(0, 0, 0, 0.8)"}}>
+        <Card as = {Link} to = {`/coin/${props.id}`} className="text-center coin-card" style={{ backgroundColor: backgroundColor, color: "white", fontSize: "0.65rem", textShadow: "1px 1px 3px rgba(0, 0, 0, 0.8)", border: `2px solid ${glow}`, boxShadow: `0 0 15px ${glow}`}}>
         <Card.Body>
             <img src={props.image} alt={props.name} width="36" height="36" style={{ filter: "drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.5))" }}/>
             <Card.Title style={{ fontSize: "0.8rem" }}>{props.name}</Card.Title>
