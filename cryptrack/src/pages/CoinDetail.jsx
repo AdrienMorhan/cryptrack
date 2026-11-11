@@ -70,13 +70,13 @@ function CoinDetail(props) {
     ];
 
     return (
-        <div>
+        <div className="detail-page">
             <div className="detail-header">
                 <div className="detail-title">
                     <img className="detail-logo" src={coin.image?.small} alt={coin.name}/>
                     <h2 className="detail-name">{coin.name}</h2>
                 </div>
-                <ButtonGroup>
+                <ButtonGroup className="detail-periods">
                     {periods.map((p) => (
                         <Button key={p.value} variant={days === p.value ? "primary" : "outline-primary"} onClick={() => setDays(p.value)}>
                             {p.label}
