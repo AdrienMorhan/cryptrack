@@ -77,17 +77,17 @@ function CoinDetail(props) {
                     <h2 className="detail-name">{coin.name}</h2>
                 </div>
                 <ButtonGroup>
-                    {periods.map((p) => (<Button key={p.value} variant={days === p.value ? "primary" : "outline-primary"} onClick={() => setDays(p.value)}>
-                    {p.label}
-                    </Button>
-                ))}
+                    {periods.map((p) => (
+                        <Button key={p.value} variant={days === p.value ? "primary" : "outline-primary"} onClick={() => setDays(p.value)}>
+                            {p.label}
+                        </Button>
+                    ))}
                 </ButtonGroup>
             </div>
             <div className="detail-favorite">
                 <FavoriteButton 
                 isFavorite={props.favorites.includes(id)}
                 onToggle={() => props.onToggleFavorite(id)}
-                style={{ width: 200,  }}
                 />
             </div>
 

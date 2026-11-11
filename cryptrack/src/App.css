@@ -183,7 +183,7 @@ a {
 }
 
 .detail-periods {
-
+    
 }
 
 .detail-favorite {
@@ -195,5 +195,13 @@ a {
     border: 1px solid black;
     border-radius: 24px;
     filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.5));
-    margin-bottom: 10px;
+    margin-bottom: 16px;
+}
+
+.favorite-button {
+    width: 200px;
+    border: 2px solid red;
+    font-weight: bold;
+    box-shadow: 0px 0px 5px red;
+    background-color: white;
 }
