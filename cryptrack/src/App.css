@@ -231,6 +231,10 @@ a {
     background-color: white;
 }
 
+.favorite-button:hover {
+    color: black;
+}
+
 .stat-label {
     font-size: 0.85rem;
     font-weight: bold;

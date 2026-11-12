@@ -6,6 +6,9 @@ function FavoriteButton(props) {
             className="favorite-button"
             variant={props.isFavorite ? "danger" : "outline-danger"}
             onClick={props.onToggle}
+            style={{
+                backgroundColor: props.isFavorite ? "red" : "white"
+            }}
         >
             Favorite {props.isFavorite ? "♥" : "♡"}
         </Button>
