@@ -40,7 +40,7 @@ function Favorites(props) {
         <div>
             {coins.length === 0 ? (
                 <div className="text-center py-5">
-                    <h1 className="display-3 fw-bold">Cryptrack</h1>
+                    <h1 className="title">Cryptrack</h1>
                     <Link to="/" className="link-no-favorite">Look for favorite</Link>
                 </div>
                 ) : (
