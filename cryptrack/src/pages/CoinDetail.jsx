@@ -19,7 +19,7 @@ function CoinDetail(props) {
         const getData = async () => {
         try {
             const res = await fetch(
-            `https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false`,
+            `https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=false&community_data=false&developer_data=false`,
             { headers: { "x-cg-demo-api-key": import.meta.env.VITE_API_KEY } }
             );
             if (!res.ok) {
@@ -69,6 +69,29 @@ function CoinDetail(props) {
         { label: "1Y", value: 365 },
     ];
 
+    const md = coin.market_data;
+
+    const formatUsd = (value) => {
+        return value === null || value === undefined ? "N/A" : `${value.toLocaleString()} $`;
+    };
+
+    const formatNumber = (value) => {
+        return value === null || value === undefined ? "N/A" : value.toLocaleString();
+    };
+
+    const formatDate = (value) => {
+        return value ? new Date(value).toLocaleDateString() : "N/A";
+    };
+
+    const stats = [
+        { label: "Market cap", value: formatUsd(md?.market_cap?.usd) },
+        { label: "24h volume", value: formatUsd(md?.total_volume?.usd) },
+        { label: "Circulating supply", value: formatNumber(md?.circulating_supply) },
+        { label: "Total supply", value: formatNumber(md?.total_supply) },
+        { label: "Created", value: formatDate(coin.genesis_date) },
+        { label: "All-time high", value: formatUsd(md?.ath?.usd) }
+    ];    
+
     return (
         <div className="detail-page">
             <div className="detail-header">
@@ -104,12 +127,17 @@ function CoinDetail(props) {
                 </Card.Body>
             </Card>
 
-            <Card>
+            <Card className="detail-about">
                 <Card.Body>
                 <Card.Title>About {coin.name}</Card.Title>
-                <p>
-                    Market cap: {coin.market_data?.market_cap?.usd?.toLocaleString()} $
-                </p>
+                    <div className="detail-stats">
+                        {stats.map((s) => (
+                            <div key={s.label} className="stat-row">
+                                <span className="stat-label">{s.label}: </span>
+                                <span className="stat-value">{s.value}</span>
+                            </div>
+                        ))}
+                    </div>
                 </Card.Body>
             </Card>
         </div>

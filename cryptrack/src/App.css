@@ -159,7 +159,7 @@ a {
     text-decoration: none;
 }
 
-/*Details' page*/
+/*Details page*/
 .detail-page {
     max-width: 1200px;
     margin: 0 auto;
@@ -207,10 +207,30 @@ a {
     margin-bottom: 16px;
 }
 
+.detail-about {
+    border: 1px solid black;
+    border-radius: 24px;
+    filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.7));
+    margin-bottom: 16px;
+    overflow: hidden;
+}
+
+.detail-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 50px;
+    margin-top: 15px;
+}
+
 .favorite-button {
     width: 200px;
     border: 2px solid rgb(255, 132, 132);
     font-weight: bold;
     box-shadow: 0px 0px 5px rgb(255, 132, 132);
     background-color: white;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    font-weight: bold;
 }
