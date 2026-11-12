@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import CoinList from "../components/CoinList";
+import Converter from "../components/Converter";
 
 function Favorites(props) {
     const [coins, setCoins] = useState([]);
@@ -49,6 +50,9 @@ function Favorites(props) {
                     <CoinList coins={coins} />
                 </div>
             )}
+            <div>
+                <Converter />
+            </div>
         </div>
     );
 }
