@@ -10,6 +10,8 @@ function Favorites(props) {
 
     useEffect(() => {
         const getData = async () => {
+            setIsLoading(true);
+            setError(null);
             if (props.favorites.length === 0) {
                 setCoins([]);
                 setIsLoading(false);

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 function Converter(props) {
   const [coins, setCoins] = useState([]);
-  const [selected, setSelected] = useState("bitcoin");
+  const [selected, setSelected] = useState("");
   const [amount, setAmount] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -48,7 +48,7 @@ function Converter(props) {
 
       <select
         className="converter-select"
-        value={selected}
+        value={coin.id}
         onChange={(e) => setSelected(e.target.value)}
       >
         {coins.map((c) => (

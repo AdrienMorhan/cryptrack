@@ -1,16 +1,6 @@
-# React + Vite
+### CrypTrack Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+#### Description
+My project is an application that displays cryptocurrency market data in real time. Its goal is to give users a quick overview of the market and allow them to explore individual cryptocurrencies in more detail through charts covering different time periods. It is designed for people who own cryptocurrencies or are simply interested in them. Users can add coins to their favourites to easily follow their performance every day and use this information to help them make decisions.
+I used the CoinGecko API to retrieve cryptocurrency prices and market information. I also used React Router to handle navigation between pages and React Bootstrap for the application's design and reusable components.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
