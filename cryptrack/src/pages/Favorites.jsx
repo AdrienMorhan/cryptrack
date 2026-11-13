@@ -51,7 +51,7 @@ function Favorites(props) {
                 </div>
             )}
             <div>
-                <Converter />
+                <Converter favorites={props.favorites}/>
             </div>
         </div>
     );

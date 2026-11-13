@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function Converter() {
+function Converter(props) {
   const [coins, setCoins] = useState([]);
   const [selected, setSelected] = useState("bitcoin");
   const [amount, setAmount] = useState("");
@@ -9,9 +9,15 @@ function Converter() {
 
   useEffect(() => {
     const getData = async () => {
+      if (props.favorites.length === 0) {
+        setCoins([]);
+        return;
+      }
+      setIsLoading(true);
+      setError(null);
       try {
         const res = await fetch(
-          "https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=100&page=1",
+          `https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&ids=${props.favorites.join(",")}`,
           { headers: { "x-cg-demo-api-key": import.meta.env.VITE_API_KEY } }
         );
         if (!res.ok) {
@@ -26,13 +32,15 @@ function Converter() {
       }
     };
     getData();
-  }, []);
+  }, [props.favorites]);
 
+  if (props.favorites.length === 0) return null;
   if (isLoading) return <p>Loading converter...</p>;
   if (error) return <p>Converter error: {error}</p>;
+  if (coins.length === 0) return null;
 
   const coin = coins.find((c) => c.id === selected);
-  const total = coin ? Number(amount) * coin.current_price : 0;
+  const total = Number(amount) * coin.current_price;
 
   return (
     <div className="converter">

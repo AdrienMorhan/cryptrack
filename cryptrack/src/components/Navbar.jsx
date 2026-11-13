@@ -29,12 +29,12 @@ function NavBar() {
             console.log(err.message);
             }
         };
-        if (query.length > 4) { // only suggestion after 5 similar letters because otherwise there are too many requests
+        if (query.length >= 3) { // only suggestion after 3 similar letters because otherwise there are too many requests
             getData();
         } else {
             setSuggestions([]);
         }
-        }, 1500);
+        }, 800);
         return () => clearTimeout(timer);
     }, [query]);
 
@@ -67,7 +67,7 @@ function NavBar() {
                 {suggestions.length > 0 ? (
                     <div className="suggest">
                     {suggestions.map((coin) => (
-                        <Nav.Link as={Link} key={coin.id} to={`/coin/${coin.id}`} onClick={() => setQuery("")}>
+                        <Nav.Link className="nav-link" as={Link} key={coin.id} to={`/coin/${coin.id}`} onClick={() => setQuery("")}>
                         {coin.name} ({coin.symbol})
                         </Nav.Link>
                     ))}
