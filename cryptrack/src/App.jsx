@@ -7,13 +7,19 @@ import CoinDetail from "./pages/CoinDetail";
 import Favorites from "./pages/Favorites";
 
 function App() {
-    const [favorites, setFavorites] = useState([]);
+    const [favorites, setFavorites] = useState(() => {
+        const saved = localStorage.getItem("favorites");
+        return saved ? JSON.parse(saved) : [];
+    });
     const toggleFavorite = (id) => {
+        let updated;
         if (favorites.includes(id)) {
-            setFavorites(favorites.filter((fav) => fav !== id));
+            updated = favorites.filter((fav) => fav !== id);
         } else {
-            setFavorites([...favorites, id]);
+            updated = [...favorites, id];
         }
+        setFavorites(updated);
+        localStorage.setItem("favorites", JSON.stringify(updated));
     };
     return (
         <div>

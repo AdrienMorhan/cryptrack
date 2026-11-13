@@ -39,7 +39,7 @@ function Converter(props) {
   if (error) return <p>Converter error: {error}</p>;
   if (coins.length === 0) return null;
 
-  const coin = coins.find((c) => c.id === selected);
+  const coin = coins.find((c) => c.id === selected) || coins[0];
   const total = Number(amount) * coin.current_price;
 
   return (
